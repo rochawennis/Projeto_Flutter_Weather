@@ -1,8 +1,11 @@
  <h1 align="center">FlutterWeather</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/47645762/158291606-b695cc6f-4786-4794-b92e-dcce12fdd032.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/47645762/158294665-dbfa289b-9327-4c6f-ae4a-5a37a0ace137.png" width="30%"></img> 
+
+<img src="https://user-images.githubusercontent.com/47645762/158294952-0205025b-9380-4a6d-ac4a-041de88b3135.png" width="30%"></img> 
  
+<img src="https://user-images.githubusercontent.com/47645762/158295168-943a7f61-3cd5-443d-b4d8-f55b6a4afea1.png" width="30%"></img> 
 </p>
 
 # FlutterWeather
