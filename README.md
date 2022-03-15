@@ -2,11 +2,8 @@
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/47645762/158294665-dbfa289b-9327-4c6f-ae4a-5a37a0ace137.png" width="30%"></img> 
-<<<<<<< HEAD
 
 <img src="https://user-images.githubusercontent.com/47645762/158294952-0205025b-9380-4a6d-ac4a-041de88b3135.png" width="30%"></img> 
-=======
->>>>>>> 3561bbecddf2fe96947d0fcca7dff74a84485d7e
  
 <img src="https://user-images.githubusercontent.com/47645762/158295168-943a7f61-3cd5-443d-b4d8-f55b6a4afea1.png" width="30%"></img> 
 </p>
