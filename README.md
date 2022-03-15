@@ -10,13 +10,13 @@
 Um app de Previsão do Tempo simples usando [Flutter](https://flutter.dev/) e [Dart](https://dart.dev/) e usando API da [OpenWeatherMap](https://openweathermap.org/)
 
 ## Recursos
-- Atualização automática para sua localização atual
-- Pesquise localizações
-- Infomrações sobre as próximas 24 horas
+- Atualização para sua localização atual
+- Pesquise lugares
+- Informações sobre as próximas 24 horas
 - Informações dos próximos 7 dias
 
 ## Como rodar em sua máquina
-1. Crie um conta [OpenWeatherMap](https://openweathermap.org/).
+1. Crie um conta em [OpenWeatherMap](https://openweathermap.org/).
 2. Em seguida, obtenha sua chave de API de https://home.openweathermap.org/api_keys.
 3. Clone o repositório
    ```sh
