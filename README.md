@@ -1,4 +1,4 @@
-<h1 align="center">FlutterWeather</h1>
+<h1 align="center">UniWeather</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/47645762/158294665-dbfa289b-9327-4c6f-ae4a-5a37a0ace137.png" width="20%"></img> 
@@ -6,7 +6,7 @@
 <img src="https://user-images.githubusercontent.com/47645762/158295168-943a7f61-3cd5-443d-b4d8-f55b6a4afea1.png" width="20%"></img> 
 </p>
 
-# FlutterWeather
+# UniWeather
 
 Um app de Previsão do Tempo simples usando [Flutter](https://flutter.dev/) e [Dart](https://dart.dev/) e usando API da [OpenWeatherMap](https://openweathermap.org/)
 
