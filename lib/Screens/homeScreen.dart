@@ -51,9 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
     await Provider.of<WeatherProvider>(context, listen: false).getWeatherData();
   }
 
-  String appTitle = "Previsão do Tempo";
 
-  bool isSearchEnabled = false;
+bool isSearchEnabled = false;
 
 void clearText() {
     _textController.clear();    
@@ -63,7 +62,8 @@ void clearText() {
     setState(() {
       isSearchEnabled = !isSearchEnabled;
       clearText();
-    });
+    }, 
+    );
   }
 
   @override
@@ -126,49 +126,55 @@ void clearText() {
                                                                               : weatherData.weather.icon == 'null'
                                                                                   ? kDayThemeBar
                                                                                   : kNightThemeBar,
-            title: !isSearchEnabled ? Text(appTitle) : TextField(
+            title: !isSearchEnabled ? 
+            IconButton(icon: Icon(Icons.search_rounded), alignment:Alignment.centerLeft,
+             onPressed: () {
+             _switchSearchBarState();
+             },) 
+             : TextField(
               style: new TextStyle(
                 color: Colors.white,
               ),
               autofocus: true,
-            controller: _textController,
-            decoration: new InputDecoration(
-                border: InputBorder.none,
-                prefixIcon: new Icon(Icons.search, color: Colors.white),
+              controller: _textController,
+              decoration: new InputDecoration(
+                isCollapsed: true,
+                prefixIcon: new Icon(Icons.location_on_outlined, color: Colors.white),
+                prefixIconConstraints: BoxConstraints(
+                minHeight: 32,
+                minWidth: 32,
+              ),
+              suffixIcon: new IconButton(
+              icon: Icon(isSearchEnabled ? Icons.close : Icons.search),
+              onPressed: () => {
+                      _switchSearchBarState()
+                     },
+              color: Colors.white,
+              ),
                 hintMaxLines: 1,
                 hintText: "Pesquise uma cidade",
-                contentPadding: EdgeInsets.symmetric(vertical: 80),
                 hintStyle: new TextStyle(color: Colors.white.withOpacity(0.5)),
+                contentPadding: EdgeInsets.fromLTRB(1,15,1,1),
                 errorText: _validate ? null : null,
                 ),
                 onSubmitted: (value) {
               setState(
                 () {
                 _textController.text.isEmpty
-                      ? _validate = false
+                      ? _validate = true
                       : Provider.of<WeatherProvider>(context, listen: false)
-                          .searchWeatherData(location: value);
-                          
+                          .searchWeatherData(location: value);    
                 },
               );
               _switchSearchBarState();
             },
           ),actions: <Widget>[
-            
-              IconButton(
-                icon: Icon(isSearchEnabled ? Icons.close : Icons.search),
-              onPressed: () => {
-                      _switchSearchBarState()
-                      }
-              ),
               IconButton(
                 onPressed:  () => _refreshData(context),
-                icon: Icon(Icons.refresh),                
+                icon: Icon(Icons.refresh),alignment:Alignment.centerLeft,                
               ),
-              
-            ]
+            ],
           ),
-
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -227,17 +233,6 @@ void clearText() {
                                                                                           ? kDayTheme
                                                                                           : kNightTheme),
         ),
-        //decoration: BoxDecoration(
-        //gradient: LinearGradient(
-        //begin: Alignment.topRight,
-        //end: Alignment.bottomLeft,
-        //colors: [
-        //   Color.fromARGB(90, 98, 98, 253),
-        //    Color.fromARGB(110, 34, 34, 240),
-        //   ],
-        //  ),
-        // image: DecorationImage(
-        //  ),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           body: _isLoading
@@ -257,7 +252,6 @@ void clearText() {
                       : Column(
                           children: [
                             SizedBox(height: 10,),
-                          // SearchBar(),
                             SmoothPageIndicator(
                               controller: _pageController,
                               count: 2,
@@ -320,7 +314,7 @@ void clearText() {
                                               FadeIn(
                                                   delay: 0.66,
                                                   child: WeatherDetail(
-                                                      wData: weatherData)),
+                                                      wData: weatherData),),
                                             ],
                                           ),
                                         ),

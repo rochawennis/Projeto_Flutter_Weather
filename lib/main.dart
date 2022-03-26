@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       child: ChangeNotifierProvider(
         create: (context) => WeatherProvider(),
         child: MaterialApp(
-          title: 'Flutter Weather',
+          title: 'UniWeather',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.transparent,
