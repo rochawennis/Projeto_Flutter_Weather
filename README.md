@@ -21,7 +21,7 @@ Um app de Previsão do Tempo simples usando [Flutter](https://flutter.dev/) e [D
 2. Em seguida, obtenha sua chave de API de https://home.openweathermap.org/api_keys.
 3. Clone o repositório
    ```sh
-   git clone https://github.com/rochawennis/UniWeather
+   git clone https://github.com/rochawennis/Projeto_Flutter_Weather
    ```
 4. Instale todos os pacotes digitando
    ```sh
