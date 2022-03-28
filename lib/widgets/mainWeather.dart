@@ -21,7 +21,7 @@ class MainWeather extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.fromLTRB(25, 15, 25, 5),
         height: MediaQuery.of(context).size.height / 3.8,
-        //width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width,
         child: Flex(
           direction: Axis.vertical,
           children: [
@@ -32,7 +32,11 @@ class MainWeather extends StatelessWidget {
                   Icons.location_on_outlined,
                   color: Colors.white,
                 ),
-               Text('${wData.weather.cityName}' + ', ' + '${wData.weather.country}',style: _style1),
+                Text(
+                    '${wData.weather.cityName}' +
+                        ', ' +
+                        '${wData.weather.country}',
+                    style: _style1),
               ],
             ),
             //SizedBox(height: 10),
@@ -44,7 +48,7 @@ class MainWeather extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 5),
                     child: SvgPicture.asset(
                         "lib/assets/${wData.weather.icon}.svg",
-                        height: 90)
+                        height: 70)
                     //Image.asset('lib/assets/' +'${wData.weather.icon.toString()}' + "@2x.png",height: 90)
                     ),
                 Text(

@@ -77,15 +77,15 @@ class WeatherInfo extends StatelessWidget {
             ),
             VerticalDivider(
               color: Colors.black87,
-              indent: 25,
-              endIndent: 25,
+              indent: 20,
+              endIndent: 20,
             ),
             SizedBox(
               child: _weatherInfoBuilder(
                 'Índice UV',
                 UvIndex.mapUviValueToString(uvi: wData.uvi),
                 WeatherIcons.wiDaySunny,
-                15,
+                18,
                 30,
               ),
             ),

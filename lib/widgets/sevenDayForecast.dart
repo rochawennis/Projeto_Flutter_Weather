@@ -36,8 +36,8 @@ class SevenDayForecast extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(),
-                  child:
-                SvgPicture.asset("lib/assets/${weather.icon}.svg",height: 70),
+                  child: SvgPicture.asset("lib/assets/${weather.icon}.svg",
+                      height: 70),
                 ),
                 Container(
                   width: 80,
@@ -69,11 +69,10 @@ class SevenDayForecast extends StatelessWidget {
           height: MediaQuery.of(context).size.height / 8.5,
           width: MediaQuery.of(context).size.width,
           margin: EdgeInsets.all(15),
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.white),
             borderRadius: BorderRadius.circular(15),
-            
           ),
           child: ListView(
             children: [
@@ -85,31 +84,27 @@ class SevenDayForecast extends StatelessWidget {
                     children: [
                       Text(
                         'Hoje',
-                        style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white
-                        ),
+                        style: TextStyle(fontSize: 15, color: Colors.white),
                       ),
                       Text(
                         '${wData.weather.temp.toStringAsFixed(1)}°',
                         style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white
-                        ),
+                            fontSize: 30,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white),
                       ),
                       Text(
-                      '${wData.weather.description.toString().toUpperCase()[0] + wData.weather.description.toString().substring(1,tam)}',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white
-                      )
-                      )
+                          '${wData.weather.description.toString().toUpperCase()[0] + wData.weather.description.toString().substring(1, tam)}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, color: Colors.white))
                     ],
                   ),
                   Padding(
-                      padding: EdgeInsets.only(),
-                      child: SvgPicture.asset("lib/assets/${wData.weather.icon}.svg",width: 70,)),
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: SvgPicture.asset(
+                        "lib/assets/${wData.weather.icon}.svg",
+                        width: 70,
+                      )),
                 ],
               ),
             ],
@@ -120,17 +115,14 @@ class SevenDayForecast extends StatelessWidget {
           child: Text(
             'Próximos 7 dias',
             style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-              color: Colors.white
-            ),
+                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
           ),
         ),
         Container(
           height: MediaQuery.of(context).size.height / 3.5,
           //width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15),
           ),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
