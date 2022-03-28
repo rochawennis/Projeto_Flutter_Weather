@@ -74,40 +74,38 @@ class SevenDayForecast extends StatelessWidget {
             border: Border.all(color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: ListView(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hoje',
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                      Text(
-                        '${wData.weather.temp.toStringAsFixed(1)}°',
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Hoje',
+                      style: TextStyle(fontSize: 15, color: Colors.white),
+                    ),
+                    Text(
+                      '${wData.weather.temp.toStringAsFixed(1)}°',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
+                    Text(
+                        '${wData.weather.description.toString().toUpperCase()[0] + wData.weather.description.toString().substring(1, tam)}',
                         style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      ),
-                      Text(
-                          '${wData.weather.description.toString().toUpperCase()[0] + wData.weather.description.toString().substring(1, tam)}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500, color: Colors.white))
-                    ],
-                  ),
-                  Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      child: SvgPicture.asset(
-                        "lib/assets/${wData.weather.icon}.svg",
-                        width: 70,
-                      )),
-                ],
-              ),
-            ],
+                            fontWeight: FontWeight.w500, color: Colors.white))
+                  ],
+                ),
+                Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: SvgPicture.asset(
+                      "lib/assets/${wData.weather.icon}.svg",
+                      width: 70,
+                    )),
+              ],
+            ),
           ),
         ),
         Padding(

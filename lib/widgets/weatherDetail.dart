@@ -69,10 +69,7 @@ class WeatherDetail extends StatelessWidget {
           child: Text(
             'Informações Adicionais',
             style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-              color: Colors.white
-            ),
+                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
           ),
         ),
         Container(
