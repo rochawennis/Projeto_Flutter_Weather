@@ -51,8 +51,28 @@ class MainWeather extends StatelessWidget {
                         height: 70)
                     //Image.asset('lib/assets/' +'${wData.weather.icon.toString()}' + "@2x.png",height: 90)
                     ),
+                TweenAnimationBuilder<int>(
+                  tween: IntTween(
+                    begin: 0,
+                    end: wData.weather.temp.toInt(),
+                  ),
+                  duration: const Duration(
+                    milliseconds: 1030,
+                  ),
+                  builder: (context, value, child) {
+                    return Text(
+                      value.toString(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 55,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  },
+                ),
                 Text(
-                  '${wData.weather.temp.toStringAsFixed(0)}°C',
+                  '°C',
                   style: TextStyle(
                       fontSize: 55,
                       fontWeight: FontWeight.w600,
