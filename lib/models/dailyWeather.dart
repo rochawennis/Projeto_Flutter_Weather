@@ -29,7 +29,7 @@ class DailyWeather with ChangeNotifier {
     final precipData = json['daily'][0]['pop'];
     final calcPrecip = precipData * 100;
     final precipitation = calcPrecip.toStringAsFixed(0);
-    
+
     return DailyWeather(
       precip: precipitation,
       uvi: json['daily'][0]['uvi'],

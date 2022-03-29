@@ -10,7 +10,7 @@ class UvIndex {
       return uvIndex = 'Médio';
     } else if (uvi <= 7) {
       return uvIndex = 'Alto';
-    } else if (uvi <= 10) {
+    } else if (uvi < 11) {
       return uvIndex = 'Elevado';
     } else if (uvi >= 11) {
       return uvIndex = 'Extremo';
@@ -216,13 +216,19 @@ String convertToDay(String day) {
 }
 
 const List<Color> kDayTheme = [Color(0xFF1579EF), Color(0xFF78E9FB)];
-const List<Color> kClouds = [ Colors.blueGrey, Colors.grey];
-const List<Color> kRain = [ Colors.indigo,Colors.indigo ];
-const List<Color> kRainNight = [ Colors.indigo,Color.fromARGB(255, 24, 39, 121)];
-const List<Color> kThunderstorm = [ Colors.deepPurple, Colors.deepPurple];
+const List<Color> kClouds = [Colors.blueGrey, Colors.grey];
+const List<Color> kRain = [Colors.indigo, Colors.indigo];
+const List<Color> kRainNight = [
+  Colors.indigo,
+  Color.fromARGB(255, 24, 39, 121)
+];
+const List<Color> kThunderstorm = [Colors.deepPurple, Colors.deepPurple];
 const List<Color> kNightTheme = [Color(0xFF031B42), Color(0xFF415D8B)];
-const List<Color> kSnow = [ Color.fromARGB(103, 255, 255, 255),Color.fromARGB(214, 255, 255, 255),Color.fromARGB(103, 255, 255, 255)];
-
+const List<Color> kSnow = [
+  Color.fromARGB(103, 255, 255, 255),
+  Color.fromARGB(214, 255, 255, 255),
+  Color.fromARGB(103, 255, 255, 255)
+];
 
 const kNightThemeBar = Color(0xFF031B42);
 const kDayThemeBar = Color(0xFF1579EF);
@@ -231,10 +237,3 @@ const kRainBar = Colors.indigo;
 const kSnowBar = Color.fromARGB(214, 255, 255, 255);
 const kThunderstormBar = Colors.deepPurple;
 const kRainNightBar = Colors.indigo;
-
-
-
-
-
-
-

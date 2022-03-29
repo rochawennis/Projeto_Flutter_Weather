@@ -47,7 +47,6 @@ class HourlyForecast extends StatelessWidget {
                     padding: const EdgeInsets.only(),
                     child: SvgPicture.asset("lib/assets/${weather.icon}.svg",
                         height: 70)),
-                //MapString.mapInputToWeather( '${weather.condition}', context),
                 Container(
                   width: 80,
                   child: Text(

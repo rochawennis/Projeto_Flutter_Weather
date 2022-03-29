@@ -100,58 +100,57 @@ class HourlyScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: weatherData.weather.icon == '01n'
-                  ? kNightThemeBar
-                  : weatherData.weather.icon == '01d'
-                      ? kDayThemeBar
-                      : weatherData.weather.icon == '02n'
-                          ? kNightThemeBar
-                          : weatherData.weather.icon == '02d'
-                              ? kDayThemeBar
-                              : weatherData.weather.icon == '03d'
-                                  ? kCloudsBar
-                                  : weatherData.weather.icon == '03n'
-                                      ? kCloudsBar
-                                      : weatherData.weather.icon == '04d'
-                                          ? kCloudsBar
-                                          : weatherData.weather.icon == '04n'
-                                              ? kCloudsBar
-                                              : weatherData.weather.icon ==
-                                                      '09d'
-                                                  ? kRainBar
-                                                  : weatherData.weather.icon ==
-                                                          '09n'
-                                                      ? kRainBar
-                                                      : weatherData.weather
-                                                                  .icon ==
-                                                              '10d'
-                                                          ? kRainBar
-                                                          : weatherData.weather
-                                                                      .icon ==
-                                                                  '10n'
-                                                              ? kRainBar
-                                                              : weatherData
-                                                                          .weather
-                                                                          .icon ==
-                                                                      '11d'
-                                                                  ? kThunderstormBar
-                                                                  : weatherData
-                                                                              .weather
-                                                                              .icon ==
-                                                                          '11n'
-                                                                      ? kThunderstormBar
-                                                                      : weatherData.weather.icon ==
-                                                                              '13d'
-                                                                          ? kSnowBar
-                                                                          : weatherData.weather.icon == '13n'
-                                                                              ? kSnowBar
-                                                                            : weatherData.weather.icon == '50n'
+            ? kNightThemeBar
+            : weatherData.weather.icon == '01d'
+                ? kDayThemeBar
+                : weatherData.weather.icon == '02n'
+                    ? kNightThemeBar
+                    : weatherData.weather.icon == '02d'
+                        ? kDayThemeBar
+                        : weatherData.weather.icon == '03d'
+                            ? kCloudsBar
+                            : weatherData.weather.icon == '03n'
+                                ? kCloudsBar
+                                : weatherData.weather.icon == '04d'
+                                    ? kCloudsBar
+                                    : weatherData.weather.icon == '04n'
+                                        ? kCloudsBar
+                                        : weatherData.weather.icon == '09d'
+                                            ? kRainBar
+                                            : weatherData.weather.icon == '09n'
+                                                ? kRainBar
+                                                : weatherData.weather.icon ==
+                                                        '10d'
+                                                    ? kRainBar
+                                                    : weatherData
+                                                                .weather.icon ==
+                                                            '10n'
+                                                        ? kRainBar
+                                                        : weatherData.weather
+                                                                    .icon ==
+                                                                '11d'
+                                                            ? kThunderstormBar
+                                                            : weatherData
+                                                                        .weather
+                                                                        .icon ==
+                                                                    '11n'
+                                                                ? kThunderstormBar
+                                                                : weatherData
+                                                                            .weather
+                                                                            .icon ==
+                                                                        '13d'
+                                                                    ? kSnowBar
+                                                                    : weatherData.weather.icon ==
+                                                                            '13n'
+                                                                        ? kSnowBar
+                                                                        : weatherData.weather.icon ==
+                                                                                '50n'
                                                                             ? kCloudsBar
-                                                                              : weatherData.weather.icon == '50d'
-                                                                            ? kCloudsBar
-                                                                              : weatherData.weather.icon == 'null'
-                                                                                  ? kDayThemeBar
-                                                                                  : kNightThemeBar,
-                                                                                  
+                                                                            : weatherData.weather.icon == '50d'
+                                                                                ? kCloudsBar
+                                                                                : weatherData.weather.icon == 'null'
+                                                                                    ? kDayThemeBar
+                                                                                    : kNightThemeBar,
         title: Text(
           'Próx. 24 hrs',
           style: TextStyle(color: Colors.white),
