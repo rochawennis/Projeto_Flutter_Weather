@@ -2,8 +2,8 @@
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/47645762/158294665-dbfa289b-9327-4c6f-ae4a-5a37a0ace137.png" width="20%"></img> 
-<img src="https://user-images.githubusercontent.com/47645762/158294952-0205025b-9380-4a6d-ac4a-041de88b3135.png" width="20%"></img> 
-<img src="https://user-images.githubusercontent.com/47645762/158295168-943a7f61-3cd5-443d-b4d8-f55b6a4afea1.png" width="20%"></img> 
+<img src="https://user-images.githubusercontent.com/47645762/163751964-9926f63e-5677-4408-aef6-7b218347be5f.png" width="20%"></img> 
+<img src="https://user-images.githubusercontent.com/47645762/163751837-1e007822-63fe-48d7-b86a-aebd9731fd63.png" width="20%"></img> 
 </p>
 
 # UniWeather
