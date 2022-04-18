@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_icons/flutter_weather_icons.dart';
 
 class UvIndex {
   static String mapUviValueToString({var uvi}) {
@@ -21,219 +20,113 @@ class UvIndex {
   }
 }
 
-class CountryName {
-  static String mapCountryNameToString({var country}) {
-    String countryName;
-    switch (country) {
-      case 'US':
-        countryName = 'EUA';
-        break;
-      case 'BR':
-        countryName = 'Brasil';
-        break;
-      case 'IT':
-        countryName = 'Itália';
-        break;
-      case 'UA':
-        countryName = 'Ucrânia';
-        break;
-      case 'CN':
-        countryName = 'China';
-        break;
-      case 'JP':
-        countryName = 'Japão';
-        break;
-      case 'MX':
-        countryName = 'México';
-        break;
-      default:
-        countryName = '';
-    }
-    return countryName;
-  }
-}
-
-class MapString {
-  static Widget mapInputToWeather(String input, BuildContext context,
-      {TextStyle style}) {
-    String text2;
-    switch (input) {
-      case 'Tornado':
-        text2 = 'Tornado';
-        break;
-      case 'Thunderstorm':
-        text2 = 'Trovoada';
-        break;
-      case 'Drizzle':
-        text2 = 'Garoa';
-        break;
-      case 'Rain':
-        text2 = 'Chuva';
-        break;
-      case 'Snow':
-        text2 = 'Neve';
-        break;
-      case 'Mist':
-        text2 = 'Névoa';
-        break;
-      case 'fog':
-        text2 = 'Névoa';
-        break;
-      case 'Smoke':
-        text2 = 'Smoky';
-        break;
-      case 'Squall':
-        text2 = 'Tempestaste';
-        break;
-      case 'Haze':
-        text2 = 'Temp. de Areia';
-        break;
-      case 'Dust':
-        text2 = 'Dusty';
-        break;
-      case 'Sand':
-        text2 = 'Temp. de Areia';
-        break;
-      case 'Ash':
-        text2 = 'Pred. Nublado';
-        break;
-      case 'Clear':
-        text2 = "Limpo";
-        break;
-      case 'Clouds':
-        text2 = "Nublado";
-        break;
-      default:
-        text2 = "No Info";
-    }
-    return Text(
-      text2,
-      style: TextStyle(
-        fontSize: 15,
-      ),
-    );
-  }
-
-  static Icon mapStringToIcon(
-      String input, BuildContext context, double iconSize) {
-    IconData myIcon;
-    switch (input) {
-      case 'Thunderstorm':
-        myIcon = WeatherIcons.wiThunderstorm;
-        break;
-      case 'Drizzle':
-        myIcon = WeatherIcons.wiSprinkle;
-        break;
-      case 'Rain':
-        myIcon = WeatherIcons.wiRain;
-        break;
-      case 'Snow':
-        myIcon = WeatherIcons.wiSnow;
-        break;
-      case 'Clear':
-        myIcon = WeatherIcons.wiDaySunny;
-        break;
-      case 'Clouds':
-        myIcon = WeatherIcons.wiCloudy;
-        break;
-      case 'Mist':
-        myIcon = WeatherIcons.wiFog;
-        break;
-      case 'fog':
-        myIcon = WeatherIcons.wiFog;
-        break;
-      case 'Smoke':
-        myIcon = WeatherIcons.wiSmoke;
-        break;
-      case 'Haze':
-      case 'Dust':
-      case 'Sand':
-        myIcon = WeatherIcons.wiSandstorm;
-        break;
-      case 'Ash':
-        myIcon = WeatherIcons.wiVolcano;
-        break;
-      case 'Squall':
-      case 'Tornado':
-        myIcon = WeatherIcons.wiHurricaneWarning;
-        break;
-      case '01n':
-        myIcon = WeatherIcons.wiNightClear;
-        break;
-      case '01d':
-        myIcon = WeatherIcons.wiDaySunny;
-        break;
-      case '04n':
-        myIcon = WeatherIcons.wiCloudy;
-        break;
-      case '10n':
-        myIcon = WeatherIcons.wiRain;
-        break;
-      case '02n':
-        myIcon = WeatherIcons.wiNightPartlyCloudy;
-        break;
-      case '03n':
-        myIcon = WeatherIcons.wiCloud;
-        break;
-      case '04d':
-        myIcon = WeatherIcons.wiCloudy;
-        break;
-      default:
-        myIcon = WeatherIcons.wiNa;
-    }
-    return Icon(
-      myIcon,
-      size: iconSize,
-      color: Theme.of(context).primaryColor,
-    );
-  }
-}
-
 // ignore: missing_return
 String convertToDay(String day) {
   switch (day) {
     case 'Wed':
-      return "Qua";
+      return "Quarta";
 
     case 'Thu':
-      return "Qui";
+      return "Quinta";
 
     case 'Fri':
-      return "Sex";
+      return "Sexta";
 
     case 'Sat':
-      return "Sáb";
+      return "Sábado";
 
     case 'Sun':
-      return "Dom";
+      return "Domingo";
 
     case 'Mon':
-      return "Seg";
+      return "Segunda";
 
     case 'Tue':
-      return "Ter";
+      return "Terça";
   }
 }
 
-const List<Color> kDayTheme = [Color(0xFF1579EF), Color(0xFF78E9FB)];
-const List<Color> kClouds = [Colors.blueGrey, Colors.grey];
-const List<Color> kRain = [Colors.indigo, Colors.indigo];
-const List<Color> kRainNight = [
-  Colors.indigo,
-  Color.fromARGB(255, 24, 39, 121)
-];
-const List<Color> kThunderstorm = [Colors.deepPurple, Colors.deepPurple];
-const List<Color> kNightTheme = [Color(0xFF031B42), Color(0xFF415D8B)];
-const List<Color> kSnow = [
-  Color.fromARGB(103, 255, 255, 255),
-  Color.fromARGB(214, 255, 255, 255),
-  Color.fromARGB(103, 255, 255, 255)
-];
+class WeatherUtils {
+  static List<Color> getColor({var weatherType}) {
+    if (weatherType == '01d') {
+      return [Color(0xFF0071D1), Color(0xFF6DA6E4)];
+    } else if (weatherType == '01n') {
+      return [Color(0xFF061E74), Color(0xFF275E9A)];
+    } else if (weatherType == '03d') {
+      return [Color(0xFF8FA3C0), Color(0xFF8C9FB1)];
+    } else if (weatherType == '03n') {
+      return [Color(0xFF2C3A60), Color(0xFF4B6685)];
+    } else if (weatherType == '04d') {
+      return [
+        Color.fromARGB(255, 144, 148, 151),
+        Color.fromARGB(255, 144, 148, 151),
+      ];
+    } else if (weatherType == '04n') {
+      return [Color(0xFF2C3A60), Color(0xFF4B6685)];
+    } else if (weatherType == '50d') {
+      return [Color(0xFFA6B3C2), Color(0xFF737F88)];
+    } else if (weatherType == '50n') {
+      return [Color(0xFFA6B3C2), Color(0xFF737F88)];
+    } else if (weatherType == '13d') {
+      return [Color(0xFF6989BA), Color(0xFF9DB0CE)];
+    } else if (weatherType == '13n') {
+      return [Color(0xFF6989BA), Color(0xFF9DB0CE)];
+    } else if (weatherType == '11d') {
+      return [Color(0xFF3B434E), Color(0xFF565D66)];
+    } else if (weatherType == '11n') {
+      return [Color(0xFF3B434E), Color(0xFF565D66)];
+    } else if (weatherType == '10d') {
+      return [Color.fromARGB(255, 56, 68, 85), Color.fromARGB(255, 68, 80, 90)];
+    } else if (weatherType == '10n') {
+      return [Color(0xFF556782), Color(0xFF7c8b99)];
+    } else if (weatherType == '02d') {
+      return [Color(0xFFA6B3C2), Color(0xFF737F88)];
+    } else if (weatherType == '02n') {
+      return [Color(0xFFA6B3C2), Color(0xFF737F88)];
+    } else {
+      return [Color(0xFF0071D1), Color(0xFF6DA6E4)];
+    }
+  }
 
-const kNightThemeBar = Color(0xFF031B42);
-const kDayThemeBar = Color(0xFF1579EF);
-const kCloudsBar = Colors.blueGrey;
-const kRainBar = Colors.indigo;
-const kSnowBar = Color.fromARGB(214, 255, 255, 255);
-const kThunderstormBar = Colors.deepPurple;
-const kRainNightBar = Colors.indigo;
+  static Color getColorBar({var weatherType}) {
+    if (weatherType == '01d') {
+      return Color(0xFF0071D1);
+    } else if (weatherType == '01n') {
+      return Color(0xFF061E74);
+    } else if (weatherType == '03d') {
+      return Color(0xFF8FA3C0);
+    } else if (weatherType == '03n') {
+      return Color(0xFF2C3A60);
+    } else if (weatherType == '04d') {
+      return Color(0xFF737F88);
+    } else if (weatherType == '04n') {
+      return Color(0xFF2C3A60);
+    } else if (weatherType == '50d') {
+      return Color(0xFFA6B3C2);
+    } else if (weatherType == '50n') {
+      return Color(0xFFA6B3C2);
+    } else if (weatherType == '13d') {
+      return Color(0xFF6989BA);
+    } else if (weatherType == '13n') {
+      return Color(0xFF6989BA);
+    } else if (weatherType == '11d') {
+      return Color(0xFF3B434E);
+    } else if (weatherType == '11n') {
+      return Color(0xFF3B434E);
+    } else if (weatherType == '10d') {
+      return Color(0xFF556782);
+    } else if (weatherType == '10n') {
+      return Color.fromARGB(202, 71, 80, 95);
+    } else if (weatherType == '02d') {
+      return Color(0xFFA6B3C2);
+    } else if (weatherType == '09d') {
+      return Color(0xFF556782);
+    } else if (weatherType == '09n') {
+      return Color(0xFF556782);
+    } else if (weatherType == '02n') {
+      return Color.fromARGB(255, 128, 147, 177);
+    } else {
+      return Color(0xFF0071D1);
+    }
+  }
+}

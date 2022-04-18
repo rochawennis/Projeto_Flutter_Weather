@@ -10,7 +10,6 @@ class WeeklyScreen extends StatelessWidget {
 
   Widget dailyWidget(dynamic weather, BuildContext context) {
     final dayOfWeek = DateFormat('EEEEE').format(weather.date);
-
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       padding: EdgeInsets.symmetric(horizontal: 15),
@@ -37,10 +36,14 @@ class WeeklyScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15, bottom: 15),
-                                child: SvgPicture.asset(
-                        "lib/assets/${weather.icon}.svg",
-                        height: 70)
+                padding: EdgeInsets.only(
+                  left: 15,
+                  bottom: 15,
+                ),
+                child: SvgPicture.asset(
+                  "lib/assets/${weather.icon}.svg",
+                  height: 70,
+                ),
               ),
             ],
           ),
@@ -54,25 +57,24 @@ class WeeklyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final weatherData = Provider.of<WeatherProvider>(context);
     final mediaQuery = MediaQuery.of(context);
-
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          title: Text(
-            'Próximos 7 dias',
-            style: TextStyle(color: Colors.black),
-          ),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Próximos 7 dias',
+          style: TextStyle(color: Colors.black),
         ),
-        body: Container(
-          height: mediaQuery.size.height,
-          width: mediaQuery.size.width,
-          child: Column(
-            children: weatherData.sevenDayWeather
-                .map((item) => dailyWidget(item, context))
-                .toList(),
-          ),
+      ),
+      body: Container(
+        height: mediaQuery.size.height,
+        width: mediaQuery.size.width,
+        child: Column(
+          children: weatherData.sevenDayWeather
+              .map((item) => dailyWidget(item, context))
+              .toList(),
         ),
-      );
+      ),
+    );
   }
 }

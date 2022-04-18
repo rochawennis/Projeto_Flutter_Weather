@@ -21,30 +21,34 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
-        vertical: 2,
-        horizontal: MediaQuery.of(context).size.width * .05,
-      ),
+      margin: EdgeInsets.fromLTRB(1, 20, 0, 20),
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 1,
+            blurRadius: 15,
+            offset: Offset(8, 6),
+          ),
+        ],
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: Colors.white)
       ),
       child: TextField(
-        style: TextStyle(color: Colors.white),
-        maxLines: 1,
+        style: TextStyle(color: Colors.black),
+        autofocus: false,
         controller: _textController,
         decoration: InputDecoration(
-          hintStyle: TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: Colors.grey),
           errorText: _validate ? null : null,
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
           enabledBorder: InputBorder.none,
           icon: Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(left: 10),
             child: Icon(
               Icons.search,
-              color: Colors.white70,
+              color: Colors.black,
             ),
           ),
           contentPadding: EdgeInsets.only(

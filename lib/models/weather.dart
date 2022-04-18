@@ -15,7 +15,9 @@ class Weather with ChangeNotifier {
   var cityName;
   var icon;
   var country;
-
+  var sunset;
+  var sunrise;
+  var date1;
 
   Weather({
     this.temp,
@@ -29,9 +31,12 @@ class Weather with ChangeNotifier {
     this.currently,
     this.humidity,
     this.windSpeed,
-    this.cityName, 
+    this.cityName,
     this.icon,
     this.country,
+    this.sunset,
+    this.sunrise,
+    this.date1,
   });
 
   factory Weather.fromJson(Map<String, dynamic> json) {
@@ -50,7 +55,18 @@ class Weather with ChangeNotifier {
       cityName: json['name'],
       icon: json['weather'][0]['icon'],
       country: json['sys']['country'],
+      date1: DateTime.fromMillisecondsSinceEpoch(
+        json['dt'] * 1000,
+        isUtc: false,
+      ),
+      sunrise: DateTime.fromMillisecondsSinceEpoch(
+        json['sys']['sunrise'] * 1000,
+        isUtc: false,
+      ),
+      sunset: DateTime.fromMillisecondsSinceEpoch(
+        json['sys']['sunset'] * 1000,
+        isUtc: false,
+      ),
     );
-    
   }
 }

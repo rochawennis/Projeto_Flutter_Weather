@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_weather/widgets/settings_state.dart';
 import 'package:provider/provider.dart';
 import '../provider/weatherProvider.dart';
+import 'settings_bloc.dart';
 
 class MainWeather extends StatelessWidget {
   final wData;
@@ -11,86 +13,110 @@ class MainWeather extends StatelessWidget {
   final TextStyle _style1 =
       TextStyle(fontWeight: FontWeight.w700, fontSize: 20, color: Colors.white);
 
+  int _toFahrenheit(double celsius) => ((celsius * 9 / 5) + 32).round();
+
+  String _formattedTemperature(double temp, TemperatureUnit temperatureUnit) =>
+      temperatureUnit == TemperatureUnit.fahrenheit
+          ? '${_toFahrenheit(temp)}'
+          : '${temp.round()}';
+
+  String _formattedTemperatureUnit(
+          double temp, TemperatureUnit temperatureUnit) =>
+      temperatureUnit == TemperatureUnit.fahrenheit ? 'F' : 'C';
+
   @override
   Widget build(BuildContext context) {
     final weatherData = Provider.of<WeatherProvider>(context);
     var cidade = weatherData.weather.cityName;
     print(cidade);
     var tam = '${wData.weather.description}'.toString().length;
-    return SafeArea(
-      child: Container(
-        padding: EdgeInsets.fromLTRB(25, 15, 25, 5),
-        height: MediaQuery.of(context).size.height / 3.8,
-        width: MediaQuery.of(context).size.width,
-        child: Flex(
-          direction: Axis.vertical,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.location_on_outlined,
-                  color: Colors.white,
-                ),
-                Text(
-                    '${wData.weather.cityName}' +
-                        ', ' +
-                        '${wData.weather.country}',
-                    style: _style1),
-              ],
-            ),
-            //SizedBox(height: 10),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                    padding: const EdgeInsets.only(right: 5),
-                    child: SvgPicture.asset(
-                        "lib/assets/${wData.weather.icon}.svg",
-                        height: 70)
-                    //Image.asset('lib/assets/' +'${wData.weather.icon.toString()}' + "@2x.png",height: 90)
+    return Container(
+      padding: EdgeInsets.all(2),
+      height: MediaQuery.of(context).size.height / 1.2,
+      width: MediaQuery.of(context).size.width,
+      child: Flex(
+        direction: Axis.vertical,
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 40,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 5,
+              ),
+              Icon(Icons.location_on_outlined, color: Colors.white),
+              Text(
+                  '${wData.weather.cityName}' +
+                      ', ' +
+                      '${wData.weather.country}',
+                  style: _style1),
+            ],
+          ),
+          SizedBox(height: 100),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BlocBuilder<SettingsBloc, SettingsState>(
+                builder: (context, settingsState) {
+                  return TweenAnimationBuilder<int>(
+                    tween: IntTween(begin: 0, end: wData.weather.temp.toInt()),
+                    duration: const Duration(
+                      milliseconds: 1030,
                     ),
-                TweenAnimationBuilder<int>(
-                  tween: IntTween(
-                    begin: 0,
-                    end: wData.weather.temp.toInt(),
-                  ),
-                  duration: const Duration(
-                    milliseconds: 1030,
-                  ),
-                  builder: (context, value, child) {
-                    return Text(
-                      value.toString(),
+                    builder: (context, value, child) {
+                      return Text(
+                        '${_formattedTemperature(value.toDouble(), settingsState.temperatureUnit)}',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 205,
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromARGB(200, 255, 255, 255),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+              Text(
+                '°',
+                style: TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.w600,
+                  color: Color.fromARGB(200, 255, 255, 255),
+                ),
+              ),
+              BlocBuilder<SettingsBloc, SettingsState>(
+                builder: (context, settingsState) {
+                  return SizedBox(
+                    child: Text(
+                      '${_formattedTemperatureUnit(wData.weather.temp.toDouble(), settingsState.temperatureUnit)}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 55,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        color: Color.fromARGB(200, 255, 255, 255),
                       ),
-                    );
-                  },
-                ),
-                Text(
-                  '°C',
-                  style: TextStyle(
-                      fontSize: 55,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
-                ),
-              ],
-            ),
-            Text(
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
                 '${wData.weather.description.toString().toUpperCase()[0] + wData.weather.description.toString().substring(1, tam)}',
                 style: _style1.copyWith(fontSize: 19),
-                textAlign: TextAlign.center),
-            SizedBox(height: 10),
-            Text(
-                'Max: ${weatherData.currentWeather.tempMaxD.toStringAsFixed(0)}° | Min: ${weatherData.currentWeather.tempMinD.toStringAsFixed(0)}°',
-                style: _style1.copyWith(fontSize: 19),
-                textAlign: TextAlign.center),
-          ],
-        ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

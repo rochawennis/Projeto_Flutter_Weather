@@ -84,7 +84,7 @@ class WeatherDetail extends StatelessWidget {
               mainAxisSpacing: 15,
             ),
             children: [
-              _gridWeatherBuilder('${wData.weather.humidity}%', 'Humidade',
+              _gridWeatherBuilder('${wData.weather.humidity}%', 'Umidade',
                   WeatherIcons.wiRaindrop),
               _gridWeatherBuilder('${wData.weather.windSpeed} km/h', 'Vento',
                   WeatherIcons.wiStrongWind),

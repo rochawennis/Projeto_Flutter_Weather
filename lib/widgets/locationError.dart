@@ -13,7 +13,6 @@ class _LocationErrorState extends State<LocationError> {
   @override
   Widget build(BuildContext context) {
     Location location = Location();
-
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

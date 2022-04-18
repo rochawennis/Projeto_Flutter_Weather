@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/helper/utils.dart';
+import 'package:flutter_weather/widgets/searchBar.dart';
+import 'package:flutter_weather_bg/bg/weather_bg.dart';
+import 'package:flutter_weather_bg/utils/weather_type.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
+import 'package:weather_icons/weather_icons.dart';
 import '../provider/weatherProvider.dart';
 import '../widgets/WeatherInfo.dart';
 import '../widgets/fadeIn.dart';
@@ -10,7 +13,6 @@ import '../widgets/hourlyForecast.dart';
 import '../widgets/locationError.dart';
 import '../widgets/mainWeather.dart';
 import '../widgets/requestError.dart';
-import '../widgets/weatherDetail.dart';
 import '../widgets/sevenDayForecast.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,12 +21,14 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
+enum OptionsMenu { settings, about }
+
 class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController = PageController();
   bool _isLoading;
   final _textController = TextEditingController();
-  bool _validate = false;
   final fieldText = TextEditingController();
+  int index;
 
   @override
   void initState() {
@@ -50,18 +54,142 @@ class _HomeScreenState extends State<HomeScreen> {
     await Provider.of<WeatherProvider>(context, listen: false).getWeatherData();
   }
 
-  bool isSearchEnabled = false;
-
-  void clearText() {
-    _textController.clear();
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Container(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(
+                WeatherIcons.day_sunny,
+                size: 45,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('UniWeather',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+                  Text(
+                    '1.0.0',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  Text(
+                    '\n©2022 Company',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 11),
+                  ),
+                ],
+              ),
+              SizedBox(),
+            ],
+          ),
+        ),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: const <Widget>[
+              Text(
+                  '\nAplicativo desenvolvido no 1º semestre de 2022 na Universidade Nove de Julho (Uninove)'),
+              Text(
+                  '\nDisciplina: Computação Móvel e Desenvolvimento de Aplicativos Móveis'),
+              Text('\nProfessor: Edson Melo de Souza'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: Text(
+              'Desenvolvedores',
+              style: TextStyle(fontSize: 18),
+            ),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: const <Widget>[
+                          Text('\nWennis Rocha de Andrade'),
+                          Text('\nLeonardo Henrique Santos de Jesus'),
+                          Text('\nRafael Duarte Morales'),
+                          Text('\nHenrique de Oliveira Carlos'),
+                          Text('\nGustavo Metzner'),
+                          Text('\nVinícius Souza de Carvalho'),
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'OK'),
+                        child: const Text(
+                          'OK',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ]),
+              );
+            },
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text(
+              'OK',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
-  _switchSearchBarState() {
-    setState(
-      () {
-        isSearchEnabled = !isSearchEnabled;
-        clearText();
-      },
+  _onOptionMenuItemSelected(OptionsMenu item) {
+    switch (item) {
+      case OptionsMenu.settings:
+        Navigator.of(context).pushNamed('/settings');
+        break;
+      case OptionsMenu.about:
+        _showDialog();
+        break;
+    }
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      title: SearchBar(),
+      actions: <Widget>[
+        IconButton(
+          onPressed: () => _refreshData(context),
+          icon: Icon(
+            Icons.my_location,
+          ),
+          tooltip: 'Localização',
+          alignment: Alignment.centerLeft,
+        ),
+        PopupMenuButton<OptionsMenu>(
+          child: Icon(
+            Icons.more_vert,
+            color: Colors.white,
+            size: 30,
+          ),
+          onSelected: this._onOptionMenuItemSelected,
+          itemBuilder: (context) => <PopupMenuEntry<OptionsMenu>>[
+            PopupMenuItem<OptionsMenu>(
+              value: OptionsMenu.settings,
+              child: Text("Configurações"),
+            ),
+            PopupMenuItem<OptionsMenu>(
+              value: OptionsMenu.about,
+              child: Text("Sobre"),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
@@ -70,172 +198,47 @@ class _HomeScreenState extends State<HomeScreen> {
     final weatherData = Provider.of<WeatherProvider>(context);
     final myContext = Theme.of(context);
     final mediaQuery = MediaQuery.of(context);
-
+    print(weatherData.weather.icon);
+    if (weatherData.weather.icon == '01d') {
+      index = 7;
+    } else if (weatherData.weather.icon == '01n') {
+      index = 6;
+    } else if (weatherData.weather.icon == '04n') {
+      index = 9;
+    } else if (weatherData.weather.icon == '03n') {
+      index = 9;
+    } else if (weatherData.weather.icon == '03d') {
+      index = 8;
+    } else if (weatherData.weather.icon == '04d') {
+      index = 12;
+    } else if (weatherData.weather.icon == '10n') {
+      index = 0;
+    } else if (weatherData.weather.icon == '10d') {
+      index = 0;
+    } else if (weatherData.weather.icon == '02n') {
+      index = 11;
+    } else if (weatherData.weather.icon == '02d') {
+      index = 11;
+    } else if (weatherData.weather.icon == '09n') {
+      index = 4;
+    } else if (weatherData.weather.icon == '09d') {
+      index = 4;
+    } else if (weatherData.weather.icon == '50d') {
+      index = 13;
+    } else if (weatherData.weather.icon == '50n') {
+      index = 13;
+    } else {
+      index = 0;
+    }
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: weatherData.weather.icon == '01n'
-            ? kNightThemeBar
-            : weatherData.weather.icon == '01d'
-                ? kDayThemeBar
-                : weatherData.weather.icon == '02n'
-                    ? kNightThemeBar
-                    : weatherData.weather.icon == '02d'
-                        ? kDayThemeBar
-                        : weatherData.weather.icon == '03d'
-                            ? kCloudsBar
-                            : weatherData.weather.icon == '03n'
-                                ? kCloudsBar
-                                : weatherData.weather.icon == '04d'
-                                    ? kCloudsBar
-                                    : weatherData.weather.icon == '04n'
-                                        ? kCloudsBar
-                                        : weatherData.weather.icon == '09d'
-                                            ? kRainBar
-                                            : weatherData.weather.icon == '09n'
-                                                ? kRainBar
-                                                : weatherData.weather.icon ==
-                                                        '10d'
-                                                    ? kRainBar
-                                                    : weatherData
-                                                                .weather.icon ==
-                                                            '10n'
-                                                        ? kRainBar
-                                                        : weatherData.weather
-                                                                    .icon ==
-                                                                '11d'
-                                                            ? kThunderstormBar
-                                                            : weatherData
-                                                                        .weather
-                                                                        .icon ==
-                                                                    '11n'
-                                                                ? kThunderstormBar
-                                                                : weatherData
-                                                                            .weather
-                                                                            .icon ==
-                                                                        '13d'
-                                                                    ? kSnowBar
-                                                                    : weatherData.weather.icon ==
-                                                                            '13n'
-                                                                        ? kSnowBar
-                                                                        : weatherData.weather.icon ==
-                                                                                '50n'
-                                                                            ? kCloudsBar
-                                                                            : weatherData.weather.icon == '50d'
-                                                                                ? kCloudsBar
-                                                                                : weatherData.weather.icon == 'null'
-                                                                                    ? kDayThemeBar
-                                                                                    : kNightThemeBar,
-        title: !isSearchEnabled
-            ? IconButton(
-                icon: Icon(Icons.search_rounded),
-                alignment: Alignment.centerLeft,
-                onPressed: () {
-                  _switchSearchBarState();
-                },
-              )
-            : TextField(
-                style: new TextStyle(
-                  color: Colors.white,
-                ),
-                autofocus: true,
-                controller: _textController,
-                decoration: new InputDecoration(
-                  isCollapsed: true,
-                  prefixIcon:
-                      new Icon(Icons.location_on_outlined, color: Colors.white),
-                  prefixIconConstraints: BoxConstraints(
-                    minHeight: 32,
-                    minWidth: 32,
-                  ),
-                  suffixIcon: new IconButton(
-                    icon: Icon(isSearchEnabled ? Icons.close : Icons.search),
-                    onPressed: () => {_switchSearchBarState()},
-                    color: Colors.white,
-                  ),
-                  hintMaxLines: 1,
-                  hintText: "Pesquise uma cidade",
-                  hintStyle:
-                      new TextStyle(color: Colors.white.withOpacity(0.5)),
-                  contentPadding: EdgeInsets.fromLTRB(1, 15, 1, 1),
-                  errorText: _validate ? null : null,
-                ),
-                onSubmitted: (value) {
-                  setState(
-                    () {
-                      _textController.text.isEmpty
-                          ? _validate = true
-                          : Provider.of<WeatherProvider>(context, listen: false)
-                              .searchWeatherData(location: value);
-                    },
-                  );
-                  _switchSearchBarState();
-                },
-              ),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () => _refreshData(context),
-            icon: Icon(Icons.refresh),
-            alignment: Alignment.centerLeft,
-          ),
-        ],
-      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: weatherData.weather.icon == '01n'
-                  ? kNightTheme
-                  : weatherData.weather.icon == '01d'
-                      ? kDayTheme
-                      : weatherData.weather.icon == '02n'
-                          ? kNightTheme
-                          : weatherData.weather.icon == '02d'
-                              ? kDayTheme
-                              : weatherData.weather.icon == '03d'
-                                  ? kClouds
-                                  : weatherData.weather.icon == '03n'
-                                      ? kClouds
-                                      : weatherData.weather.icon == '04d'
-                                          ? kClouds
-                                          : weatherData.weather.icon == '04n'
-                                              ? kClouds
-                                              : weatherData.weather.icon ==
-                                                      '09d'
-                                                  ? kRain
-                                                  : weatherData.weather.icon ==
-                                                          '09n'
-                                                      ? kRain
-                                                      : weatherData.weather
-                                                                  .icon ==
-                                                              '10d'
-                                                          ? kRain
-                                                          : weatherData.weather
-                                                                      .icon ==
-                                                                  '10n'
-                                                              ? kRain
-                                                              : weatherData
-                                                                          .weather
-                                                                          .icon ==
-                                                                      '11d'
-                                                                  ? kThunderstorm
-                                                                  : weatherData
-                                                                              .weather
-                                                                              .icon ==
-                                                                          '11n'
-                                                                      ? kThunderstorm
-                                                                      : weatherData.weather.icon ==
-                                                                              '13d'
-                                                                          ? kSnow
-                                                                          : weatherData.weather.icon == '13n'
-                                                                              ? kSnow
-                                                                              : weatherData.weather.icon == '50n'
-                                                                                  ? kClouds
-                                                                                  : weatherData.weather.icon == '50d'
-                                                                                      ? kClouds
-                                                                                      : weatherData.weather.icon == 'null'
-                                                                                          ? kDayTheme
-                                                                                          : kNightTheme),
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors:
+                WeatherUtils.getColor(weatherType: weatherData.weather.icon),
+          ),
         ),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
@@ -247,89 +250,122 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               : weatherData.loading
                   ? Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: myContext.backgroundColor,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircularProgressIndicator(
+                              valueColor: new AlwaysStoppedAnimation<Color>(
+                                  Colors.white)),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            'Aguarde...',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
                       ),
                     )
                   : weatherData.isLocationError
                       ? LocationError()
-                      : Column(
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            SmoothPageIndicator(
-                              controller: _pageController,
-                              count: 2,
-                              effect: ExpandingDotsEffect(
-                                activeDotColor: myContext.primaryColor,
-                                strokeWidth: 5,
-                                spacing: 5,
-                                dotHeight: 6,
-                                dotWidth: 2,
-                              ),
-                            ),
-                            weatherData.isRequestError
-                                ? RequestError()
-                                : Expanded(
-                                    child: PageView(
-                                      controller: _pageController,
-                                      children: [
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          width: mediaQuery.size.width,
-                                          child: RefreshIndicator(
-                                            onRefresh: () =>
-                                                _refreshData(context),
-                                            backgroundColor: Colors.white,
-                                            child: ListView(
-                                              children: [
-                                                FadeIn(
-                                                  delay: 0,
-                                                  child: MainWeather(
-                                                      wData: weatherData),
-                                                ),
-                                                FadeIn(
-                                                  delay: 0.33,
-                                                  child: WeatherInfo(
-                                                      wData: weatherData
-                                                          .currentWeather),
-                                                ),
-                                                FadeIn(
-                                                  delay: 0.66,
-                                                  child: HourlyForecast(
-                                                      weatherData
-                                                          .hourlyWeather),
-                                                ),
-                                              ],
-                                            ),
+                      : Material(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.zero,
+                            child: Container(
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: <Widget>[
+                                  WeatherBg(
+                                    weatherType: WeatherType.values[index],
+                                    width:
+                                        MediaQuery.of(context).size.width * 1.2,
+                                    height: MediaQuery.of(context).size.height,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Center(
+                                        heightFactor: 30,
+                                        child: SmoothPageIndicator(
+                                          controller: _pageController,
+                                          count: 2,
+                                          effect: ExpandingDotsEffect(
+                                            activeDotColor:
+                                                myContext.primaryColor,
+                                            dotHeight: 6,
+                                            dotWidth: 6,
                                           ),
                                         ),
-                                        Container(
-                                          height: mediaQuery.size.height,
-                                          width: mediaQuery.size.width,
-                                          child: ListView(
+                                      ),
+                                    ],
+                                  ),
+                                  weatherData.isRequestError
+                                      ? RequestError()
+                                      : ClipRect(
+                                          child: PageView(
+                                            controller: _pageController,
                                             children: [
-                                              FadeIn(
-                                                delay: 0.33,
-                                                child: SevenDayForecast(
-                                                  wData: weatherData,
-                                                  dWeather: weatherData
-                                                      .sevenDayWeather,
+                                              RefreshIndicator(
+                                                edgeOffset: 70,
+                                                onRefresh: () =>
+                                                    _refreshData(context),
+                                                backgroundColor: Colors.white,
+                                                child: ListView(
+                                                  children: <Widget>[
+                                                    buildAppBar(),
+                                                    FadeIn(
+                                                      delay: 0,
+                                                      child: MainWeather(
+                                                          wData: weatherData),
+                                                    ),
+                                                    FadeIn(
+                                                      delay: 0.33,
+                                                      child: WeatherInfo(
+                                                          wData: weatherData
+                                                              .currentWeather),
+                                                    ),
+                                                    FadeIn(
+                                                      delay: 0.66,
+                                                      child: HourlyForecast(
+                                                          weatherData
+                                                              .hourlyWeather),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                              FadeIn(
-                                                delay: 0.66,
-                                                child: WeatherDetail(
-                                                    wData: weatherData),
+                                              Container(
+                                                height: mediaQuery.size.height,
+                                                width: mediaQuery.size.width,
+                                                child: ListView(
+                                                  children: [
+                                                    buildAppBar(),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                    FadeIn(
+                                                      delay: 0.33,
+                                                      child: SevenDayForecast(
+                                                        wData: weatherData,
+                                                        dWeather: weatherData
+                                                            .sevenDayWeather,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                          ],
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
         ),
       ),

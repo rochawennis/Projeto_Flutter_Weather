@@ -111,33 +111,33 @@
 75-->[:location] D:\FlutterWeather-main\FlutterWeather-main\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-53
 76
 77        <uses-library
-77-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\348f2bca8d2e796c23bd0fcd21bb47eb\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+77-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\5c93c4350eb16bb8d72fddde1122db41\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 78            android:name="androidx.window.extensions"
-78-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\348f2bca8d2e796c23bd0fcd21bb47eb\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+78-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\5c93c4350eb16bb8d72fddde1122db41\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
 79            android:required="false" />
-79-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\348f2bca8d2e796c23bd0fcd21bb47eb\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+79-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\5c93c4350eb16bb8d72fddde1122db41\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
 80        <uses-library
-80-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\348f2bca8d2e796c23bd0fcd21bb47eb\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+80-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\5c93c4350eb16bb8d72fddde1122db41\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
 81            android:name="androidx.window.sidecar"
-81-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\348f2bca8d2e796c23bd0fcd21bb47eb\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+81-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\5c93c4350eb16bb8d72fddde1122db41\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 82            android:required="false" />
-82-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\348f2bca8d2e796c23bd0fcd21bb47eb\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+82-->[androidx.window:window:1.0.0-beta04] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\5c93c4350eb16bb8d72fddde1122db41\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 83
 84        <activity
-84-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\ed4e11cd6c058a5c18950a802bad700d\jetified-play-services-base-16.0.1\AndroidManifest.xml:23:9-26:75
+84-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\10ef74f051c5b8bac52187c12e3ec913\jetified-play-services-base-16.0.1\AndroidManifest.xml:23:9-26:75
 85            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-85-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\ed4e11cd6c058a5c18950a802bad700d\jetified-play-services-base-16.0.1\AndroidManifest.xml:24:13-79
+85-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\10ef74f051c5b8bac52187c12e3ec913\jetified-play-services-base-16.0.1\AndroidManifest.xml:24:13-79
 86            android:exported="false"
-86-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\ed4e11cd6c058a5c18950a802bad700d\jetified-play-services-base-16.0.1\AndroidManifest.xml:25:13-37
+86-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\10ef74f051c5b8bac52187c12e3ec913\jetified-play-services-base-16.0.1\AndroidManifest.xml:25:13-37
 87            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-87-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\ed4e11cd6c058a5c18950a802bad700d\jetified-play-services-base-16.0.1\AndroidManifest.xml:26:13-72
+87-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\10ef74f051c5b8bac52187c12e3ec913\jetified-play-services-base-16.0.1\AndroidManifest.xml:26:13-72
 88
 89        <meta-data
-89-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\cd497cfb8d3c72d5ba03f5343ef9c70f\jetified-play-services-basement-16.0.1\AndroidManifest.xml:23:9-25:69
+89-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\afa44772105e458ecf9ab933c234a748\jetified-play-services-basement-16.0.1\AndroidManifest.xml:23:9-25:69
 90            android:name="com.google.android.gms.version"
-90-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\cd497cfb8d3c72d5ba03f5343ef9c70f\jetified-play-services-basement-16.0.1\AndroidManifest.xml:24:13-58
+90-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\afa44772105e458ecf9ab933c234a748\jetified-play-services-basement-16.0.1\AndroidManifest.xml:24:13-58
 91            android:value="@integer/google_play_services_version" />
-91-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\cd497cfb8d3c72d5ba03f5343ef9c70f\jetified-play-services-basement-16.0.1\AndroidManifest.xml:25:13-66
+91-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\WENNIS\.gradle\caches\transforms-2\files-2.1\afa44772105e458ecf9ab933c234a748\jetified-play-services-basement-16.0.1\AndroidManifest.xml:25:13-66
 92    </application>
 93
 94</manifest>

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:location/location.dart';
 import 'dart:convert';
-
 import '../models/weather.dart';
 import '../models/dailyWeather.dart';
 
@@ -28,9 +27,9 @@ class WeatherProvider with ChangeNotifier {
         var latitude = locData.latitude;
         var longitude = locData.longitude;
         Uri url = Uri.parse(
-            'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&appid=$apiKey&lang=pt_br');
+            'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&appid=$apiKey&lang=pt_BR');
         Uri dailyUrl = Uri.parse(
-            'https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&units=metric&exclude=minutely,current&appid=$apiKey&lang=pt_br');
+            'https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&units=metric&exclude=minutely,current&appid=$apiKey&lang=pt_BR');
         try {
           final response = await http.get(url);
           final extractedData =
@@ -101,15 +100,18 @@ class WeatherProvider with ChangeNotifier {
       loading = false;
       this.isRequestError = true;
       notifyListeners();
-      throw error;
+      //throw error;
     }
     var latitude = weather.lat;
     var longitude = weather.long;
+    print(latitude);
+    print(longitude);
     Uri dailyUrl = Uri.parse(
-        'https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&units=metric&exclude=minutely,current&appid=$apiKey&lang=pt_BR');
+        'https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&units=metric&exclude=minutely,current&appid=$apiKey');
     try {
       final response = await http.get(dailyUrl);
       final dailyData = json.decode(response.body) as Map<String, dynamic>;
+      print(dailyUrl);
       currentWeather = DailyWeather.fromJson(dailyData);
       var tempHourly = [];
       var temp24Hour = [];

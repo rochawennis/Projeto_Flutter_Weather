@@ -24,7 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  cidades_estados_ibge: ^0.0.9
   http: ^0.12.2
   intl: ^0.16.1
   provider: ^4.3.3
@@ -36,8 +35,14 @@ dependencies:
   flutter_svg: ^1.0.3
   flare_flutter: ^3.0.2
   path_provider: ^2.0.9
+  weather_icons: ^3.0.0
+  flutter_weather_bg: ^2.8.2
+  shared_preferences: ^2.0.5
+  syncfusion_flutter_gauges: ^18.4.49
+  flutter_bloc: ^6.0.1
+  equatable: ^1.0.0
   sembast: ^3.2.0
-  dropdown_cidades: ^0.0.2
+  
   
 
 dev_dependencies:
