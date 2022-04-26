@@ -185,15 +185,15 @@ class WeatherInfo extends StatelessWidget {
                       return TweenAnimationBuilder<int>(
                         tween: IntTween(
                             begin: 0,
-                            end: weatherData.currentWeather.tempMaxD.toInt()),
+                            end: weatherData.currentWeather.tempMinD.toInt()),
                         duration: const Duration(
                           milliseconds: 1030,
                         ),
                         builder: (context, value, child) {
                           return _weatherInfoBuilder(
-                            'Máxima',
+                            'Mínima',
                             '${_formattedTemperature(value.toDouble(), settingsState.temperatureUnit)}',
-                            WeatherIcons.wiThermometer,
+                            WeatherIcons.wiThermometerExterior,
                             5,
                             30,
                           );
@@ -218,15 +218,15 @@ class WeatherInfo extends StatelessWidget {
                       return TweenAnimationBuilder<int>(
                         tween: IntTween(
                             begin: 0,
-                            end: weatherData.currentWeather.tempMinD.toInt()),
+                            end: weatherData.currentWeather.tempMaxD.toInt()),
                         duration: const Duration(
                           milliseconds: 1030,
                         ),
                         builder: (context, value, child) {
                           return _weatherInfoBuilder(
-                            'Mínima',
+                            'Máxima',
                             '${_formattedTemperature(value.toDouble(), settingsState.temperatureUnit)}',
-                            WeatherIcons.wiThermometerExterior,
+                            WeatherIcons.wiThermometer,
                             5,
                             30,
                           );

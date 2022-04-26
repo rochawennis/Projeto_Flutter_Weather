@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\FlutterWeather-main\\FlutterWeather-main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\Documents\\FlutterWeather-main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\WENNIS\\.gradle\\caches\\transforms-2\\files-2.1\\5c93c4350eb16bb8d72fddde1122db41\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
@@ -42,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "D:\\FlutterWeather-main\\FlutterWeather-main\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "D:\\Documents\\FlutterWeather-main\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3,15",
                         "startColumns": "4,4",
@@ -58,23 +58,6 @@
                         "endLines": "135,139",
                         "endColumns": "12,12",
                         "endOffsets": "9596,9832"
-                    }
-                },
-                {
-                    "source": "D:\\FlutterWeather-main\\FlutterWeather-main\\build\\location\\intermediates\\packaged_res\\debug\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "82",
-                        "endOffsets": "133"
-                    },
-                    "to": {
-                        "startLines": "128",
-                        "startColumns": "4",
-                        "startOffsets": "9079",
-                        "endColumns": "82",
-                        "endOffsets": "9157"
                     }
                 },
                 {
@@ -147,6 +130,23 @@
                         "startOffsets": "1525,1614,1685,3224,3277,3330,3383,6548,10155,10331,10453,10715,10910",
                         "endColumns": "88,70,72,52,52,52,52,59,65,121,60,65,66",
                         "endOffsets": "1609,1680,1753,3272,3325,3378,3431,6603,10216,10448,10509,10776,10972"
+                    }
+                },
+                {
+                    "source": "D:\\Documents\\FlutterWeather-main\\build\\location\\intermediates\\packaged_res\\debug\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "82",
+                        "endOffsets": "133"
+                    },
+                    "to": {
+                        "startLines": "128",
+                        "startColumns": "4",
+                        "startOffsets": "9079",
+                        "endColumns": "82",
+                        "endOffsets": "9157"
                     }
                 }
             ]

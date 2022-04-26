@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\FlutterWeather-main\\FlutterWeather-main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
+            "outputFile": "D:\\Documents\\FlutterWeather-main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
             "map": [
                 {
                     "source": "C:\\Users\\WENNIS\\.gradle\\caches\\transforms-2\\files-2.1\\afa44772105e458ecf9ab933c234a748\\jetified-play-services-basement-16.0.1\\res\\values-am\\values.xml",

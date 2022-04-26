@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\FlutterWeather-main\\FlutterWeather-main\\build\\shared_preferences_android\\intermediates\\res\\merged\\debug\\values\\values.xml",
+            "outputFile": "D:\\Documents\\FlutterWeather-main\\build\\shared_preferences_android\\intermediates\\res\\merged\\debug\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\WENNIS\\.gradle\\caches\\transforms-2\\files-2.1\\5c93c4350eb16bb8d72fddde1122db41\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
@@ -44,7 +44,7 @@
             ]
         },
         {
-            "outputFile": "D:\\FlutterWeather-main\\FlutterWeather-main\\build\\shared_preferences_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\Documents\\FlutterWeather-main\\build\\shared_preferences_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\WENNIS\\.gradle\\caches\\transforms-2\\files-2.1\\5c93c4350eb16bb8d72fddde1122db41\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",

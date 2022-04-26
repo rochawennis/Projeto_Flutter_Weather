@@ -20,7 +20,7 @@ class SevenDayForecast extends StatelessWidget {
   String _formattedTemperature(double temp, TemperatureUnit temperatureUnit) =>
       temperatureUnit == TemperatureUnit.fahrenheit
           ? '${_toFahrenheit(temp)}°F'
-          : '${temp.toDouble()}°C';
+          : '${temp.toDouble()}°';
 
   Widget dailyWidget(dynamic weather, BuildContext context) {
     final dayOfWeek = DateFormat("EEE").format(weather.date);
@@ -59,59 +59,36 @@ class SevenDayForecast extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Center(
-                              child: Text(
-                                'Máx: ',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                        Center(
+                          child: Text(
+                            '${_formattedTemperature(tempMax, settingsState.temperatureUnit)}',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
                             ),
-                            Center(
-                              child: Text(
-                                'Min: ',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Center(
-                              child: Text(
-                                "${_formattedTemperature(tempMax, settingsState.temperatureUnit)}",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                        Text(
+                          '| ',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            "${_formattedTemperature(tempMin, settingsState.temperatureUnit)}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
                             ),
-                            Center(
-                              child: Text(
-                                "${_formattedTemperature(tempMin, settingsState.temperatureUnit)}",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -230,7 +207,7 @@ class SevenDayForecast extends StatelessWidget {
                         'Vento', WeatherIcons.wiStrongWind),
                     _gridWeatherBuilder(
                         '${_formattedTemperature(temp, settingsState.temperatureUnit)}',
-                        'S. Térmica',
+                        'Sens. Térmica',
                         WeatherIcons.wiThermometer),
                     _gridWeatherBuilder('${wData.weather.pressure} hPa',
                         'Pressão', WeatherIcons.wiBarometer),

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\FlutterWeather-main\\FlutterWeather-main\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\values\\values.xml",
+            "outputFile": "D:\\Documents\\FlutterWeather-main\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\WENNIS\\.gradle\\caches\\transforms-2\\files-2.1\\348f2bca8d2e796c23bd0fcd21bb47eb\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
+                    "source": "C:\\Users\\WENNIS\\.gradle\\caches\\transforms-2\\files-2.1\\5c93c4350eb16bb8d72fddde1122db41\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,7,8,9,10,11,19,23,34,51",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -44,10 +44,10 @@
             ]
         },
         {
-            "outputFile": "D:\\FlutterWeather-main\\FlutterWeather-main\\build\\path_provider_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\Documents\\FlutterWeather-main\\build\\path_provider_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\WENNIS\\.gradle\\caches\\transforms-2\\files-2.1\\348f2bca8d2e796c23bd0fcd21bb47eb\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
+                    "source": "C:\\Users\\WENNIS\\.gradle\\caches\\transforms-2\\files-2.1\\5c93c4350eb16bb8d72fddde1122db41\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,7,8,9,10,11,19,23,34,51",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
